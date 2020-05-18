@@ -1,0 +1,94 @@
+.BuffMain{
+    background: white;
+    width: auto;
+    max-width: 900px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */ 
+    margin: 0 auto; /* 페이지 중앙 정렬 */
+    margin-top: 4rem;
+    
+  }
+  .form-wrapper {
+    padding: 1rem;
+  }
+  .title {
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 100;
+    background: #22b8cf;;
+    color: white;
+  }
+
+  .inputBox {
+    width:100%;
+    margin:20px;
+    margin-bottom: 30px;
+    border: none;
+    }
+    .inputBox input {
+      width: 50%;
+      font-size: 1rem;
+      margin: 10px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #c5f6fa;
+    }
+
+
+
+  .selectBox {
+    display: flex;
+    margin:20px;
+    margin-bottom: 30px;
+    border: 1px solid skyblue; 
+    background-color: rgba(0,0,0,0);
+    color:skyblue; 
+    padding: 5px;
+    border-radius: 10px;
+    }.selectBox:hover {
+        background-color: skyblue;
+        color: white;
+    }.selectBox:focus {
+        background-color: skyblue;
+        color: white;
+    }
+
+
+.selectKingdom {
+        display: flex;
+        }
+.selectKingdom box {
+            flex:1;
+            margin:20px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid black; 
+            background-color:linear-gradient(#FFFFFF, #B0B0B0);
+            color: gray; 
+            padding: 10px;
+            border-radius: 10px;
+            }
+            .selectKingdom box:focus {
+                background-color: #22b8cf;
+                color: white;
+                }
+    
+
+
+.create-button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 1rem;
+    background: #22b8cf;
+    text-align: center;
+    margin: 20px;
+    border-radius: 3px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }  
+  .create-button:hover {
+    background: #3bc9db;
+  }
