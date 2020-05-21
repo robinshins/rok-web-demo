@@ -20,13 +20,13 @@
   }
 
   .inputBox {
-    width:100%;
+    width:90%;
     margin:20px;
     margin-bottom: 30px;
     border: none;
     }
     .inputBox input {
-      width: 50%;
+      width: 40%;
       font-size: 1rem;
       margin: 10px;
       outline: none;
@@ -45,21 +45,14 @@
     color:skyblue; 
     padding: 5px;
     border-radius: 10px;
-    }.selectBox:hover {
-        background-color: skyblue;
-        color: white;
-    }.selectBox:focus {
-        background-color: skyblue;
-        color: white;
-    }
 
-
+  }
 .selectKingdom {
         display: flex;
         }
 .selectKingdom box {
             flex:1;
-            margin:20px;
+            margin:15px;
             margin-bottom: 30px;
             text-align: center;
             border: 2px solid black; 
@@ -68,10 +61,7 @@
             padding: 10px;
             border-radius: 10px;
             }
-            .selectKingdom box:focus {
-                background-color: #22b8cf;
-                color: white;
-                }
+
     
 
 

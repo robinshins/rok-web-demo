@@ -1,87 +1,75 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
 import MemberItemList from "../components/MemberItemList"
 import MemberItem from "../components/MemberItem"
 import MemberListForm from "../components/MemberListForm"
 import MemberList from "../components/MemberList.js";
+import Http from '../api';
+import './Home.css';
+import qs from 'qs';
 
-const Home = () => {
-//      id = 3
-//   state = {
-//     input : '',
-//     MemberItems:[
-//       { id: 0, text: '신규섭', checked: false },
-//       { id: 1, text: '김귀인', checked: true },
-//       { id: 2, text: '이성엽', checked: false }
-//     ]
-//   }
+class Home extends Component {
+  state = { Userid: '', Userpassword:'',flag:''};
+    
+  onClickLogin = async text => {
+    try{
+    const response = await Http.patch('loginresponse/', qs.stringify({
+         'mode': "login", 'password': this.state.Userpassword, 'account':this.state.Userid
+      })
+      );
+      if(response.status===200){
+        window.location.href = '/buffmain'
+      }else{
+       
+      }
 
-//   handleToggle = (id) => {
-//     const {MemberItems} = this.state
-//     const index = MemberItems.findIndex(MemberItems => MemberItems.id === id);
-//     const selected = MemberItems[index];
-//     const nextMemberItems = [...MemberItems];
-//     nextMemberItems[index] = { 
-//       ...selected, 
-//       checked: !selected.checked
-//     };
+    }catch(error){
+      //console.log(error)
+      this.setState({flag : 2})
+      //alert("아이디와 비밀번호를 확인해주세요")
 
-//     this.setState({
-//       MemberItems: nextMemberItems
-//     });
+    }
+      //console.log(response.data)
+   
+      //this.setState({ images: response.data.result });
+  }
 
+  handleEmailChange = (e) => {
+    this.setState({Userid: e.target.value});
+ }
+ 
+ handlePasswordChange = (e) => {
+    this.setState({Userpassword: e.target.value});
+ }
 
-//   }
+  render() {
+    const {
+onClickLogin,handleEmailChange,handlePasswordChange
+    } = this;
 
+    return (
+      <main className="Home">
+        <div className="title">
+          라오킹 버프사이트
+          </div>
+        <section className="form-wrapper">
+          <div className="email">
+            <input id="Username" value ={this.state.Userid}  onChange = {handleEmailChange} placeholder="아이디"  />
+          </div>
+          <div className="password">
+            <input type="text" value ={this.state.Userpassword} onChange = {handlePasswordChange} id="Userpassword" placeholder="비밀번호" />
+          </div>
+          <div className="create-button" onClick={onClickLogin}>
+            로그인
+      </div>
+          <div className="create-button" onClick={event => window.location.href = '/register'}>
+            회원가입
+      </div>
+      { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}>아이디와 비밀번호를 확인해주세요</p>}
+        </section>
+      </main>
+      
+    );
+  }
 
-//   handleChange = (e) => {
-//     this.setState({
-//       input: e.target.value // input 의 다음 바뀔 값
-//     });
-//   }
-
-//   handleCreate = () => {
-//     const { input, MemberItems } = this.state;
-//     this.setState({
-//       input: '', // 인풋 비우고
-//       // concat 을 사용하여 배열에 추가
-//       MemberIems: MemberItems.concat({
-//         id: this.id++,
-//         text: input,
-//         checked: false
-//       })
-//     });
-//   }
-
-//   handleKeyPress = (e) => {
-//     // 눌려진 키가 Enter 면 handleCreate 호출
-//     if(e.key === 'Enter') {
-//       this.handleCreate();
-//     }
-//   }
-
-
-
-
-    // const {input} = this.state;
-    // const {
-    //   handleChange,handleCreate,handleKeyPress,handleToggle
-    // } = this;
-
-    // handleResgisterClick = () =>{
-
-    // }
-    // routeChange=()=> {
-    //     let path = `newPath`;
-    //     let history = useHistory();
-    //     history.push(path);
-    //   }
-    //   const {
-    //     routeChange
-    //   } = this;
-  return (
-    <MemberList form = {<MemberListForm    />}>
-    </MemberList>
-  );
 }
-
 export default Home;
