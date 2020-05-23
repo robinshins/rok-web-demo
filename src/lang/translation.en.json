@@ -1,0 +1,17 @@
+{
+  "title.login": "LogIn",
+  "message.hello": "Hello",
+  "login": "login",
+  "register": "register",
+  "id" :"Id",
+  "password" :"Password",
+  "okay" :"okay",
+  "cancel" :"cancel",
+  "ruinapply" :"Ruin Apply",
+  "result" :"result",
+  "ingameNickName" :"Ingame NickName",
+  "ingameCode" :"User code (refer game profile)",
+  "serverNumber" :"Server number"
+
+
+}

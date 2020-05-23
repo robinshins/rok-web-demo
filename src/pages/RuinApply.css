@@ -85,3 +85,15 @@
       border: none;
       border-bottom: 1px solid #c5f6fa;
     }
+
+    .selectBox {
+        display: flex;
+        margin:20px;
+        margin-bottom: 30px;
+        border: 1px solid skyblue; 
+        background-color: rgba(0,0,0,0);
+        color:skyblue; 
+        padding: 5px;
+        border-radius: 10px;
+    
+      }

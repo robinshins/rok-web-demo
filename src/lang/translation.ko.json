@@ -1,0 +1,14 @@
+{
+    "message.hello": "안녕하세요",
+    "login": "로그인",
+    "register": "회원가입",
+    "id" :"아이디",
+    "password" :"비밀번호",
+    "okay" :"확인",
+    "cancel" :"취소",
+    "ruinapply" :"폐허 신청",
+    "result" :"결과",
+    "ingameNickName" :"인게임 닉네임",
+    "ingameCode" :"유저고유 번호 (게임 프로필 참고)",
+    "serverNumber" :"서버 번호"
+  }

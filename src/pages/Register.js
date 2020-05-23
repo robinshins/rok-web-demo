@@ -2,12 +2,14 @@ import React, { Fragment, Component } from 'react';
 import './Register.css';
 import Http from '../api';
 import qs from 'qs';
+import {withTranslation,useTranslation} from "react-i18next";
+import i18n from "i18next";
 
 
 class Register extends Component{
     state = { Userid: '', Userpassword:'',flag:'',user_ingamecode:'',user_ingameID:'',server_number:''};
 
-
+ 
     onClickRegister = async text => {
         try{
         const response = await Http.post('userresponse/', qs.stringify({
@@ -57,36 +59,37 @@ class Register extends Component{
 
 
     render(){
+        const { t } = this.props;
 
         const {
             onClickRegister,handleEmailChange,handlePasswordChange,handleIngameCodeChange,handleIngameNameChange,handleServerNumberChange
                 } = this
     return (
         <main className="Register">
-            <div className="title">
-                회원가입
+            <div className="title2">
+            {t("register")}
           </div>
           <section className = "form-wrapper">
             <div className="email">
-                <input id="Username" value ={this.state.Userid}  onChange = {handleEmailChange} placeholder="아이디" />
+                <input id="Username" value ={this.state.Userid}  onChange = {handleEmailChange} placeholder= {t("id")} />
             </div>
             <div className="password">
-                <input type='text' id="Userpassword" value ={this.state.Userpassword}  onChange = {handlePasswordChange} placeholder="비밀번호" />
+                <input type='text' id="Userpassword" value ={this.state.Userpassword}  onChange = {handlePasswordChange} placeholder= {t("password")} />
             </div>
             <div className="password">
-                <input type='text' id="UserNickName" value ={this.state.user_ingameID}  onChange = {handleIngameNameChange} placeholder="인게임 닉네임" />
+                <input type='text' id="UserNickName" value ={this.state.user_ingameID}  onChange = {handleIngameNameChange} placeholder= {t("ingameNickName")} />
             </div>
             <div className="password">
-                <input type='text' id="UserId" value ={this.state.user_ingamecode}  onChange = {handleIngameCodeChange} placeholder="유저고유 번호 (게임 프로필 참고)" />
+                <input type='text' id="UserId" value ={this.state.user_ingamecode}  onChange = {handleIngameCodeChange} placeholder= {t("ingameCode")} />
             </div>
             <div className="password">
-                <input type='text' id="UserServerId" value ={this.state.server_number}  onChange = {handleServerNumberChange} placeholder="서버 번호" />
+                <input type='text' id="UserServerId" value ={this.state.server_number}  onChange = {handleServerNumberChange} placeholder= {t("serverNumber")} />
             </div>
             <div className="create-button" onClick = {onClickRegister}>
-                회원가입
+            {t("register")}
             </div>
             <div className="create-button" onClick = {event =>  window.location.href='/'}>
-                취소
+            {t("cancel")}
             </div>
             { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}>이미 있는 아이디입니다</p>}
             { this.state.flag === 1 && <p style = {{color:'#ff4040', textAlign:'center'}}>해당서버는 가입되어 있지 않습니다</p>}
@@ -97,4 +100,4 @@ class Register extends Component{
 }
 }
 
-export default Register;
+export default  withTranslation()(Register);;

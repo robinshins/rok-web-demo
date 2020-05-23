@@ -27,9 +27,7 @@ class BuffMain extends Component {
         return (
             <main className="BuffMain">
                 <section className="form-wrapper">
-                    <div className="title">
-                        라오킹 버프 사이트
-            </div>
+
                     <div className="inputBox">
                         <p>X :</p>
                         <input type='number' id="x" placeholder="" />
