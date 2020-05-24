@@ -9,10 +9,9 @@ const config = {
   };
 
 export default axios.create({
-    baseURL: 'http://rokserver.bearbear.co.kr/',
+    baseURL: 'https://bearbear.co.kr/',
     headers: config,
     withCredentials: true
-
     // header: {
     // 	Authorization: 'bearer accessKey'
     // }
