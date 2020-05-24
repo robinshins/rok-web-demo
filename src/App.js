@@ -8,6 +8,7 @@ import MemberList from "./components/MemberList.js";
 import Header from './components/Headers';
 import {withTranslation,useTranslation} from "react-i18next";
 import i18n from "i18next";
+import 'react-app-polyfill/ie9' //ie9~
 
 
 class App extends Component {

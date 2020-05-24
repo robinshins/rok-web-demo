@@ -20,6 +20,9 @@ componentDidMount() {
       );
       if(response.status===201){
         const singleItem = response.data.info[response.data.info.length-1]
+        if(response.data.info.length === 0){
+          this.setState({flag : -1})
+        }
         console.log(response)
         let date = new Date(singleItem.ruintime)
         //date.setHours(date.getHours()+9)
@@ -71,6 +74,7 @@ handleApplyclick = async text => {
       window.location.href = `/ruinresult/${this.state.items[0].id}`
     }else if (response.status === 406){
        alert("already fulled")
+       window.location.href = `/ruinresult/${this.state.items[0].id}`
     }
 
   }catch(error){
@@ -112,6 +116,7 @@ handleApplyclick = async text => {
             apply 
       </div>
         </section>
+        { this.state.flag === -1 && <p style = {{color:'#ff4040', textAlign:'center'}}> There is no available time</p>}
       </main>
       
     );
