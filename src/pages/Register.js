@@ -91,8 +91,8 @@ class Register extends Component{
             <div className="create-button" onClick = {event =>  window.location.href='/'}>
             {t("cancel")}
             </div>
-            { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}>이미 있는 아이디입니다</p>}
-            { this.state.flag === 1 && <p style = {{color:'#ff4040', textAlign:'center'}}>해당서버는 가입되어 있지 않습니다</p>}
+            { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}>{t("error.existingID")}</p>}
+            { this.state.flag === 1 && <p style = {{color:'#ff4040', textAlign:'center'}}>{t("error.serverExisting")}</p>}
             </section>
         </main>
 
