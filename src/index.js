@@ -1,3 +1,7 @@
+import 'react-app-polyfill/ie9' //ie9~
+import 'react-app-polyfill/ie11' //ie9~
+import 'react-app-polyfill/stable';
+import 'core-js/stable'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -7,9 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
-import 'react-app-polyfill/ie9' //ie9~
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+
 
 const store = createStore(reducers);
 

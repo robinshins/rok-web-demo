@@ -12,7 +12,7 @@
   "ingameNickName" :"Ingame NickName",
   "ingameCode" :"User code (refer game profile)",
   "serverNumber" :"Server number",
-  "error.existingID" : "existing user id",
+  "error.existingID" : "check your input or use other ID",
   "error.serverExisting" : "not existing server",
   "error.wrongid":"please check your id or password"
 

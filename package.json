@@ -7,21 +7,25 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "core-js": "^3.6.5",
     "i18next": "^19.4.4",
     "i18next-browser-languagedetector": "^4.2.0",
     "i18next-http-backend": "^1.0.12",
+    "node-sass": "^4.14.1",
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-flags-select": "^1.1.12",
-    "react-i18next": "^11.4.0",
+    "react-i18next": "^11.5.0",
     "react-intl": "^4.5.8",
     "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
+    "sass-loader": "^8.0.2",
     "styled-components": "^5.1.0"
   },
   "scripts": {
@@ -40,6 +44,8 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
+      "ie 9",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"

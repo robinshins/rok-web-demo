@@ -7,7 +7,7 @@ import i18n from "i18next";
 
 
 class Register extends Component{
-    state = { Userid: '', Userpassword:'',flag:'',user_ingamecode:'',user_ingameID:'',server_number:''};
+    state = { Userid: '', Userpassword:'',flag:'',user_ingamecode:'',user_ingameID:'',server_number:'',value:''};
 
  
     onClickRegister = async text => {
@@ -47,7 +47,15 @@ class Register extends Component{
      }
      
      handlePasswordChange = (e) => {
-        this.setState({Userpassword: e.target.value});
+        const idReg =  /^[A-Za-z0-9]*$/ ;  
+        if (e.target.value === '' || idReg.test(e.target.value)) {
+            this.setState({Userpassword: e.target.value})
+         }
+
+
+        // let value = e.target.value
+        // value = value.replace( /^[A-Za-z0-9+]*$/ig, '')
+        // this.setState({Userpassword:value});
      }
 
      handleIngameNameChange = (e) => {
@@ -71,11 +79,13 @@ class Register extends Component{
             onClickRegister,handleEmailChange,handlePasswordChange,handleIngameCodeChange,handleIngameNameChange,handleServerNumberChange
                 } = this
     return (
+
         <main className="Register">
             <div className="title2">
             {t("register")}
           </div>
           <section className = "form-wrapper">
+
             <div className="email">
                 <input id="Username" value ={this.state.Userid}  onChange = {handleEmailChange} placeholder= {t("id")} />
             </div>
@@ -86,10 +96,10 @@ class Register extends Component{
                 <input type='text' id="UserNickName" value ={this.state.user_ingameID}  onChange = {handleIngameNameChange} placeholder= {t("ingameNickName")} />
             </div>
             <div className="password">
-                <input type='text' id="UserId" value ={this.state.user_ingamecode}  onChange = {handleIngameCodeChange} placeholder= {t("ingameCode")} />
+                <input type='number'  id="UserId" value ={this.state.user_ingamecode}  onChange = {handleIngameCodeChange} placeholder= {t("ingameCode")} />
             </div>
             <div className="password">
-                <input type='text' id="UserServerId" value ={this.state.server_number}  onChange = {handleServerNumberChange} placeholder= {t("serverNumber")} />
+                <input type='number' id="UserServerId" value ={this.state.server_number}  onChange = {handleServerNumberChange} placeholder= {t("serverNumber")} />
             </div>
             <div className="create-button" onClick = {onClickRegister}>
             {t("register")}

@@ -64,6 +64,10 @@ componentDidMount() {
 
 
 handleApplyclick = async text => {
+  console.log(this.state.flag)
+  if(this.state.flag===-1){
+    
+  }else{
   if(this.state.items[0].checked){
   try{
   const response = await Http.patch('userresponse/', qs.stringify({
@@ -73,21 +77,26 @@ handleApplyclick = async text => {
     console.log(response)
     if(response.status===201){
       alert("apply success")
-      window.location.href = `/ruinresult/${this.state.items[0].id}`
-    }else if (response.status === 406){
-       alert("already fulled")
-       window.location.href = `/ruinresult/${this.state.items[0].id}`
+      window.location.href = `/ruinresult`
+    }else{
+       alert("apply failed")
+       window.location.href = `/ruinresult`
     }
 
   }catch(error){
     if (error.response.status === 406){
       alert("already fulled")
+      window.location.href = `/ruinresult`
    }
+   window.location.href = `/ruinresult`
     console.log(error.response)
     //console.log(response.error)
     //alert("아이디와 비밀번호를 확인해주세요")
 
   }
+}else{
+  this.setState({flag : -2})
+}
 }
 }
 
@@ -115,6 +124,7 @@ handleApplyclick = async text => {
         <section className="form-wrapper">
           {divItems}
           { this.state.flag === -1 && <p style = {{color:'#ff4040', textAlign:'center'}}> There is no available time</p>}
+          { this.state.flag === -2 && <p style = {{color:'#ff4040', textAlign:'center'}}> select time first</p>}
           <div className="create-button" onClick = {handleApplyclick}>
             apply 
       </div>
