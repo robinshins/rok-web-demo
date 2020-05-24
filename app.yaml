@@ -1,6 +1,6 @@
 runtime: python27
 api_version: 1
-service: web
+service: default
 threadsafe: true
 handlers:
   - url: /static/js/(.*)
@@ -19,5 +19,8 @@ handlers:
     static_files: build/index.html
     upload: build/index.html
   - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+  - url: .*
     static_files: build/index.html
     upload: build/index.html

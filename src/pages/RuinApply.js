@@ -19,10 +19,11 @@ componentDidMount() {
       }}
       );
       if(response.status===201){
-        const singleItem = response.data.info[response.data.info.length-1]
+     
         if(response.data.info.length === 0){
           this.setState({flag : -1})
-        }
+        }else{
+        const singleItem = response.data.info[response.data.info.length-1]
         console.log(response)
         let date = new Date(singleItem.ruintime)
         //date.setHours(date.getHours()+9)
@@ -31,9 +32,10 @@ componentDidMount() {
         const item = [{id:singleItem.ruintime_code, time:singleItem.ruintime.substring(0,10) + " "+singleItem.ruintime.substring(11,19),checked:false,koreaTime:date.toString().substring(15,25)}]
         this.setState({items : item})
         console.log(this.state.items)
-      }else if(response.status){
-        console.log(response)
       }
+    }else if(response.status){
+      console.log(response)
+    }
 
     }catch(error){
       this.setState({flag : 2})
@@ -112,11 +114,11 @@ handleApplyclick = async text => {
           </div>
         <section className="form-wrapper">
           {divItems}
+          { this.state.flag === -1 && <p style = {{color:'#ff4040', textAlign:'center'}}> There is no available time</p>}
           <div className="create-button" onClick = {handleApplyclick}>
             apply 
       </div>
         </section>
-        { this.state.flag === -1 && <p style = {{color:'#ff4040', textAlign:'center'}}> There is no available time</p>}
       </main>
       
     );
