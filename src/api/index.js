@@ -9,7 +9,7 @@ const config = {
   };
 
 export default axios.create({
-    baseURL: 'https://bearbear.co.kr/',
+    baseURL: 'https://www.bearbear.co.kr/',
     headers: config,
     withCredentials: true
     // header: {
@@ -17,7 +17,7 @@ export default axios.create({
     // }
 });
 
-// export default axios.create({
+// export default axios.creayte({
 //   baseURL: 'http://rokserver.bearbear.co.kr/',
 //   headers: config,
 //   withCredentials: true,
