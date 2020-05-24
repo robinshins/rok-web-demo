@@ -78,7 +78,7 @@ onClickLogin,handleEmailChange,handlePasswordChange
           <div className="create-button" onClick={event => window.location.href = '/register'}>
           {t("register")}
       </div>
-      { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}>아이디와 비밀번호를 확인해주세요</p>}
+      { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}> {t("error.wrongid")}</p>}
         </section>
       </main>
       

@@ -24,12 +24,18 @@ class Register extends Component{
           }
     
         }catch(error){
+            if(error.response != null){
             if(error.response.status === 409){
                 this.setState({flag : 2})
             }else if(error.response.status === 404){
                 this.setState({flag : 1})
+            }else{
+               
             }
-          console.log(error.response)
+        }else{
+            this.setState({flag : 3})
+        }
+          console.log(error)
           //console.log(response.error)
           //alert("아이디와 비밀번호를 확인해주세요")
     
@@ -93,6 +99,7 @@ class Register extends Component{
             </div>
             { this.state.flag === 2 && <p style = {{color:'#ff4040', textAlign:'center'}}>{t("error.existingID")}</p>}
             { this.state.flag === 1 && <p style = {{color:'#ff4040', textAlign:'center'}}>{t("error.serverExisting")}</p>}
+            { this.state.flag === 3 && <p style = {{color:'#ff4040', textAlign:'center'}}>Server error</p>}
             </section>
         </main>
 

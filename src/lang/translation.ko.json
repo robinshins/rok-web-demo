@@ -12,5 +12,6 @@
     "ingameCode" :"유저고유 번호 (게임 프로필 참고)",
     "serverNumber" :"서버 번호",
     "error.existingID" : "이미 존재하는 아이디입니다",
-    "error.serverExisting" : "가입되지 않은 서버 입니다"
+    "error.serverExisting" : "가입되지 않은 서버 입니다",
+    "error.wrongid":"아이디와 비밀번호를 확인해주세요"
   }
