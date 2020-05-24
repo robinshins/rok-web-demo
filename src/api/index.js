@@ -6,7 +6,7 @@ const config = {
   };
 
 export default axios.create({
-    baseURL: 'https://35.201.106.119/',
+    baseURL: 'https://rokserver.bearbear.co.kr/',
     headers: config,
     withCredentials: true
     // header: {
