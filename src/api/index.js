@@ -6,7 +6,7 @@ const config = {
   };
 
 export default axios.create({
-    baseURL: 'http://35.238.162.67/',
+    baseURL: 'https://35.201.106.119/',
     headers: config,
     withCredentials: true
     // header: {

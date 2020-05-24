@@ -1,6 +1,6 @@
 import React, { Fragment, Component,useState } from 'react';
 import Http from '../api';
-import './Home.css';
+import './RuinResult.css';
 import qs from 'qs';
 
 class RuinApply extends Component {
@@ -47,8 +47,8 @@ componentDidMount() {
     } = this;
 
     let divItems = this.state.items.map((item,index) => {
-        return <div className="selectBox" key={item.id}>{`(${index+1}) `+item.name}</div>
- 
+        return <div className="selectBox2" key={item.id}>{`(${index+1}) `+item.name}</div>
+
    });
 
     return (

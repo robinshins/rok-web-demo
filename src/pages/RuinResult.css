@@ -86,14 +86,11 @@
       border-bottom: 1px solid #c5f6fa;
     }
 
-    .selectBox {
+    .selectBox2 {
         display: flex;
         margin:20px;
-        margin-bottom: 30px;
-        border: 1px solid skyblue; 
+        border-bottom: 1px solid black; 
         background-color: rgba(0,0,0,0);
-        color:skyblue; 
+        color:black; 
         padding: 5px;
-        border-radius: 10px;
-    
       }
