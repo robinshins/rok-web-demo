@@ -3,7 +3,8 @@ import MemberItemList from "../components/MemberItemList"
 import MemberItem from "../components/MemberItem"
 import MemberListForm from "../components/MemberListForm"
 import MemberList from "../components/MemberList.js";
-import Http from '../api';
+import axios from '../api';
+import https from 'https';
 import './Home.css';
 import qs from 'qs';
 import { Redirect } from 'react-router';
@@ -16,7 +17,7 @@ class Home extends Component {
     
   onClickLogin = async text => {
     try{
-    const response = await Http.patch('loginresponse/', qs.stringify({
+    const response = await axios.patch('loginresponse/', qs.stringify({
          'mode': "login", 'password': this.state.Userpassword, 'account':this.state.Userid
       })
       );
@@ -32,6 +33,7 @@ class Home extends Component {
       }
 
     }catch(error){
+      console.log(error)
       this.setState({flag : 2})
       //alert("아이디와 비밀번호를 확인해주세요")
 
