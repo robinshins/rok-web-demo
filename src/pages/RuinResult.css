@@ -94,3 +94,11 @@
         color:black; 
         padding: 5px;
       }
+
+.x-box{
+        position: relative;
+        color: rgb(129, 122, 122);
+        margin-left: auto;
+
+        
+ }

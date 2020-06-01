@@ -25,7 +25,7 @@ class App extends Component {
       <Switch>
       <Route path='/register' component={Register}/>
       <Route path='/buffmain' component={BuffMain}/>
-      <Route path='/ruinapply/:id/:nickname' component={RuinApply}/>
+      <Route path='/ruinapply/' component={RuinApply}/>
       <Route path='/ruinresult/:ruintimecode' component={RuinResult}/>
       </Switch>
       </Router> 

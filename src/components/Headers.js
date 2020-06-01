@@ -64,7 +64,7 @@ render(){
     return (
         <div>
             <div className="logo">
-                <title2 > 1525  {t("ruinapply")}</title2>
+                <title2> 1525  {t("ruinapply")}</title2>
             </div>
             <ReactFlagsSelect
                     className="menu-flags" 
