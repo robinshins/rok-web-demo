@@ -2,6 +2,8 @@ import React, { Fragment, Component, useState } from 'react';
 import Http from '../api';
 import './RuinApply.css';
 import qs from 'qs';
+import { withTranslation, useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 class RuinApply extends Component {
   state = { items: [], flag: -2, is_admin: this.props.match.params.isadmin };
@@ -27,6 +29,8 @@ class RuinApply extends Component {
 
         } else {
           const singleItem = response.data.info;
+          console.log(singleItem)
+          const items = []
           singleItem.forEach(element => {
             let date = new Date(element.ruintime)
             //date.setHours(date.getHours()+9)
@@ -38,7 +42,7 @@ class RuinApply extends Component {
             else {
               var ruin_type = 'altar'
             }
-            this.state.items.push({
+            items.push({
               id: element.ruintime_code,
               time: element.ruintime.substring(0, 10) + " " + element.ruintime.substring(11, 19),
               checked: false,
@@ -46,7 +50,9 @@ class RuinApply extends Component {
               ruin_type: ruin_type,
               alliance_name: element.alliance_name
             })
-          })
+          }
+          )
+          this.setState({ items: items })
         }
       } else if (response.status) {
         console.log(response)
@@ -118,16 +124,27 @@ class RuinApply extends Component {
       handleTimeClick, handleApplyclick
     } = this;
     console.log(this.state.items)
+    const { t } = this.props;
     let divItems = this.state.items.map((item, index) => {
       return <div>{
-        item.checked === true && <div className="selectBox" key={item.id} style={{ backgroundColor: "#87ceeb", color: "#ffffff" }}
-          onClick={() => handleTimeClick(item.id)}>{"UTC : " + item.time}<br />{"Korea time : " + item.koreaTime}{"type : " + item.ruin_type}</div>
+        item.checked === true && item.ruin_type == "ruin" && <div className="selectBox" key={item.id} style={{ backgroundColor: "#87ceeb", color: "#ffffff" }}
+          onClick={() => handleTimeClick(item.id)}>{"UTC : " + item.time}<br />{"Korea time : " + item.koreaTime}{"type : " + t("ruin")}</div>
       }
         {
-          item.checked === false && <div className="selectBox" key={item.id
+          item.checked === true && item.ruin_type == "altar" && <div className="selectBox" key={item.id} style={{ backgroundColor: "#87ceeb", color: "#ffffff" }}
+            onClick={() => handleTimeClick(item.id)}>{"UTC : " + item.time}<br />{"Korea time : " + item.koreaTime}{"type : " + t("altar")}</div>
+        }
+        {
+          item.checked === false && item.ruin_type == "ruin" && <div className="selectBox" key={item.id
           } onClick={() => handleTimeClick(item.id)
-          }> {"UTC : " + item.time} < br /> {"Korea time : " + item.koreaTime}{"type : " + item.ruin_type}</div >
-        } </div>
+          }> {"UTC : " + item.time} < br /> {"Korea time : " + item.koreaTime} {"type : " + t("ruin")}</div >
+        }
+        {
+          item.checked === false && item.ruin_type == "altar" && <div className="selectBox" key={item.id
+          } onClick={() => handleTimeClick(item.id)
+          }> {"UTC : " + item.time} < br /> {"Korea time : " + item.koreaTime} {"type : " + t("altar")}</div >
+        }
+      </div>
 
 
     });
@@ -151,4 +168,4 @@ class RuinApply extends Component {
   }
 
 }
-export default RuinApply;
+export default withTranslation()(RuinApply);
