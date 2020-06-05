@@ -4,7 +4,7 @@ import './RuinApply.css';
 import qs from 'qs';
 
 class RuinApply extends Component {
-  state = { items: [], flag: '', is_admin: this.props.match.params.isadmin };
+  state = { items: [], flag: -2, is_admin: this.props.match.params.isadmin };
 
   componentDidMount() {
     this.getRuintime();
@@ -59,7 +59,7 @@ class RuinApply extends Component {
     }
   }
 
-  handleTimeClick = (e, id) => {
+  handleTimeClick = (id) => {
     console.log(this.state.items)
 
     const { items } = this.state;
@@ -72,7 +72,6 @@ class RuinApply extends Component {
       ...selected,
       checked: !selected.checked
     };
-
     this.setState({
       items: nextItems
     });
@@ -118,14 +117,19 @@ class RuinApply extends Component {
     const {
       handleTimeClick, handleApplyclick
     } = this;
-    console.log( this.state.items)
+    console.log(this.state.items)
     let divItems = this.state.items.map((item, index) => {
-      if (item.checked === false) {
-        return <div className="selectBox" key={item.id} style={{ backgroundColor: "#87ceeb", color: "#ffffff" }} onClick={event => handleTimeClick(event, item.id)}>{"UTC : " + item.time}<br />{"Korea time : " + item.koreaTime}{"type : " + item.ruin_type}</div>
-
-      } else {
-        return <div className="selectBox" key={item.id} onClick={event => handleTimeClick(event, item.id)}>{"UTC : " + item.time}<br />{"Korea time : " + item.koreaTime}{"type : " + item.ruin_type}</div>
+      return <div>{
+        item.checked === true && <div className="selectBox" key={item.id} style={{ backgroundColor: "#87ceeb", color: "#ffffff" }}
+          onClick={() => handleTimeClick(item.id)}>{"UTC : " + item.time}<br />{"Korea time : " + item.koreaTime}{"type : " + item.ruin_type}</div>
       }
+        {
+          item.checked === false && <div className="selectBox" key={item.id
+          } onClick={() => handleTimeClick(item.id)
+          }> {"UTC : " + item.time} < br /> {"Korea time : " + item.koreaTime}{"type : " + item.ruin_type}</div >
+        } </div>
+
+
     });
 
     return (
