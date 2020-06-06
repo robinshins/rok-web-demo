@@ -72,6 +72,8 @@ class RuinApply extends Component {
     // 파라미터로 받은 id 를 가지고 몇번째 아이템인지 찾습니다.
     const index = items.findIndex(item => item.id === id);
     const selected = items[index]; // 선택한 객체
+    items.forEach(item=> item.checked = false)
+
     const nextItems = [...items]; // 배열을 복사
     // 기존의 값들을 복사하고, checked 값을 덮어쓰기
     nextItems[index] = {
@@ -88,27 +90,29 @@ class RuinApply extends Component {
     if (this.state.flag === -1) {
 
     } else {
-      if (this.state.items[0].checked) {
+      const selected = this.state.items.find(item => item.checked===true)
+      console.log(selected)
+      if (selected.checked) {
         try {
           const response = await Http.patch('userresponse/', qs.stringify({
-            'mode': 'RUIN_register', 'ruintime_code': this.state.items[0].id
+            'mode': 'RUIN_register', 'ruintime_code': selected.id
           })
           );
           console.log(response)
           if (response.status === 201) {
             alert("apply success")
-            window.location.href = `/ruinresult/${this.state.items[0].id}/${this.state.is_admin}`
+            window.location.href = `/ruinresult/${selected.id}/${this.state.is_admin}`
           } else {
             alert("apply failed")
-            window.location.href = `/ruinresult/${this.state.items[0].id}/${this.state.is_admin}`
+            window.location.href = `/ruinresult/${selected.id}/${this.state.is_admin}`
           }
 
         } catch (error) {
           if (error.response.status === 406) {
             alert("already registered or full")
-            window.location.href = `/ruinresult/${this.state.items[0].id}/${this.state.is_admin}`
+            window.location.href = `/ruinresult/${selected.id}/${this.state.is_admin}`
           }
-          window.location.href = `/ruinresult/${this.state.items[0].id}/${this.state.is_admin}`
+          window.location.href = `/ruinresult/${selected.id}/${this.state.is_admin}`
           console.log(error.response)
           //console.log(response.error)
           //alert("아이디와 비밀번호를 확인해주세요")
